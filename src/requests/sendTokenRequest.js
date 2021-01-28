@@ -27,12 +27,7 @@ export async function sendTokenRequest({
   });
 
   if (response != null) {
-    const data = JSON.parse(response);
-    return {
-      accessToken: data.access_token,
-      expiresIn: data.expires_in,
-      tokenType: data.token_type,
-    };
+    return JSON.parse(response);
   }
 
   return null;
