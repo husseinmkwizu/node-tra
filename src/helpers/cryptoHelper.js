@@ -5,8 +5,7 @@ export async function createSignature(key, message) {
   const sign = crypto.createSign("RSA-SHA1");
   sign.write(message);
   sign.end();
-  const signature = sign.sign(key);
-  return signature.toString("base64");
+  return sign.sign(key, "base64");
 }
 
 export async function loadKeyCertificate(filePath, password) {

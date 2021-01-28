@@ -56,7 +56,7 @@ export async function sendRegistrationRequest({
         USERNAME: efdResponse.USERNAME?._text,
         PASSWORD: efdResponse.PASSWORD?._text,
         TOKENPATH: efdResponse.TOKENPATH?._text,
-        TAXCODES: efdResponse.TAXCODES,
+        // TAXCODES: efdResponse.TAXCODES,
       };
     }
   }
