@@ -30,7 +30,10 @@ export async function sendRequest({
       });
       resp.on("end", () => {
         try {
-          res(data);
+          res({
+            headers: resp.headers,
+            data,
+          });
         } catch (error) {
           rej(error);
         }

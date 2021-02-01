@@ -32,7 +32,7 @@ export async function loadKeyCertificate(filePath, password) {
         if (err != null) {
           rej(err);
         } else {
-          res(result.key);
+          res({ key: result.key });
         }
       }
     );

@@ -26,8 +26,18 @@ export async function sendTokenRequest({
     method: "POST",
   });
 
-  if (response != null) {
-    const resultData = JSON.parse(response);
+  if (response == null) {
+    return null;
+  }
+  const { data } = response;
+
+  if (response?.headers?.ackcode != "7") {
+    //ACTIVATED
+    console.log("DEVICE NOT ACTIVATED");
+  }
+
+  if (data != null) {
+    const resultData = JSON.parse(data);
     return {
       success: true,
       data: resultData,

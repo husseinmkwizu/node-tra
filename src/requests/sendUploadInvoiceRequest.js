@@ -56,9 +56,14 @@ export async function sendUploadInvoiceRequest({
     method: "POST",
   });
 
-  if (response != null) {
+  if (response == null) {
+    return null;
+  }
+  const { data } = response;
+
+  if (data != null) {
     var options = { compact: true };
-    const result = convert.xml2js(response, options);
+    const result = convert.xml2js(data, options);
     const efdResponse = result?.EFDMS?.RCTACK;
 
     if (efdResponse != null) {
