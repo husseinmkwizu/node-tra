@@ -2,10 +2,23 @@ import crypto from "crypto";
 import pem from "pem";
 
 export async function createSignature(key, message) {
-  const sign = crypto.createSign("RSA-SHA1");
-  sign.write(message);
-  sign.end();
-  return sign.sign(key, "base64");
+  const signature = crypto.sign("sha1", Buffer.from(message), {
+    key: key,
+    padding: crypto.constants.RSA_PKCS1_PADDING,
+  });
+  return signature.toString("base64");
+}
+
+export async function verifySignature(publicKey, message, signature) {
+  return crypto.verify(
+    "sha1",
+    Buffer.from(message),
+    {
+      key: publicKey,
+      padding: crypto.constants.RSA_PKCS1_PADDING,
+    },
+    signature
+  );
 }
 
 export async function loadKeyCertificate(filePath, password) {
