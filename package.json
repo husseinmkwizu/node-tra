@@ -1,9 +1,8 @@
 {
   "name": "node-tra",
-  "version": "1.0.1",
-  "type": "module",
+  "version": "1.0.3",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "npm run clean && npx babel src --out-dir dist",
     "build-compact": "npm run clean && npx babel src --out-dir dist --copy-files --include-dotfiles --verbose --minified --compact=true",

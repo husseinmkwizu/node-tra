@@ -35,7 +35,7 @@ export async function sendRegistrationRequest({
     const efdResponse = result?.EFDMS?.EFDMSRESP;
 
     if (efdResponse != null) {
-      return {
+      const resultData = {
         ACKCODE: efdResponse.ACKCODE?._text,
         ACKMSG: efdResponse.ACKMSG?._text,
         REGID: efdResponse.REGID?._text,
@@ -57,6 +57,11 @@ export async function sendRegistrationRequest({
         PASSWORD: efdResponse.PASSWORD?._text,
         TOKENPATH: efdResponse.TOKENPATH?._text,
         // TAXCODES: efdResponse.TAXCODES,
+      };
+
+      return {
+        success: efdResponse.ACKCODE?._text == "0",
+        data: resultData,
       };
     }
   }
