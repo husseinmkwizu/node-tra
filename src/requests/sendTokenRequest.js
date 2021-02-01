@@ -27,7 +27,11 @@ export async function sendTokenRequest({
   });
 
   if (response != null) {
-    return JSON.parse(response);
+    const resultData = JSON.parse(response);
+    return {
+      success: true,
+      data: resultData,
+    };
   }
 
   return null;
