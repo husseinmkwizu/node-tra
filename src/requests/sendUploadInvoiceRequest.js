@@ -85,6 +85,16 @@ export async function sendUploadInvoiceRequest({
   return null;
 }
 
+//***** NOTE: Order of Keys in the item, seems to matter, otherwise TRA API throws an error */
+{
+  /* <ITEM>
+<ID>1</ID>
+<DESC>Product 1</DESC>
+<QTY>1</QTY>
+<TAXCODE>1</TAXCODE>
+<AMT>1000</AMT>
+</ITEM> */
+}
 function getItemsXML(items) {
   let itemsXML = "";
   if (items != null && Array.isArray(items)) {
