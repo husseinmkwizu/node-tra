@@ -1,6 +1,6 @@
 {
   "name": "node-tra",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@babel/cli": "^7.12.13",
     "@babel/core": "^7.12.13",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.13",
     "@babel/preset-env": "^7.12.13",
     "rimraf": "^3.0.2"
   },
