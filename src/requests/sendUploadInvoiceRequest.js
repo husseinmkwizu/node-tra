@@ -1,4 +1,4 @@
-import { sendRequest } from "../helpers/SendRequest";
+import { sendRequest } from "../helpers/sendRequest";
 import { createSignature } from "../helpers/cryptoHelper";
 import convert from "xml-js";
 
