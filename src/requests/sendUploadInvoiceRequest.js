@@ -1,5 +1,5 @@
-import { sendRequest } from "../helpers/SendRequest.js";
-import { createSignature } from "../helpers/cryptoHelper.js";
+import { sendRequest } from "../helpers/SendRequest";
+import { createSignature } from "../helpers/cryptoHelper";
 import convert from "xml-js";
 
 export async function sendUploadInvoiceRequest({

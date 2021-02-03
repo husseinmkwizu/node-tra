@@ -1,4 +1,4 @@
-import { sendRequest } from "../helpers/SendRequest.js";
+import { sendRequest } from "../helpers/sendRequest";
 import querystring from "querystring";
 
 export async function sendTokenRequest({

@@ -1,7 +1,7 @@
-import { createSignature, loadKeyCertificate } from "./helpers/cryptoHelper.js";
-import { sendTokenRequest } from "./requests/sendTokenRequest.js";
-import { sendRegistrationRequest } from "./requests/sendRegistrationRequest.js";
-import { sendUploadInvoiceRequest } from "./requests/sendUploadInvoiceRequest.js";
+import { createSignature, loadKeyCertificate } from "./helpers/cryptoHelper";
+import { sendTokenRequest } from "./requests/sendTokenRequest";
+import { sendRegistrationRequest } from "./requests/sendRegistrationRequest";
+import { sendUploadInvoiceRequest } from "./requests/sendUploadInvoiceRequest";
 
 export {
   loadKeyCertificate,
