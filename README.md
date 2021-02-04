@@ -2,6 +2,20 @@
 
 This package implements TRA (Tanzania Revenue Authority) APIs.
 
+### Install
+
+#### via NPM
+
+```
+npm install node-tra --save
+```
+
+#### via yarn
+
+```
+yarn add node-tra
+```
+
 ### Load key certificate
 
 Before calling any APIs, you will need to load your key certificate. You can use this helper function to do so.
