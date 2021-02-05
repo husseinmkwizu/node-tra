@@ -49,7 +49,7 @@ const response = await sendRegistrationRequest({
   path: path,
 });
 
-//if successful, success == true
+//if successful, response.success == true
 const { success, data } = response;
 ```
 
@@ -72,7 +72,7 @@ const response = await sendTokenRequest({
   path: path,
 });
 
-//if successful, success == true
+//if successful, response.success == true
 const { success, data } = response;
 ```
 
@@ -131,6 +131,6 @@ const response = await sendUploadInvoiceRequest({
   },
 });
 
-//if successful, success == true
+//if successful, response.success == true
 const { success, data } = response;
 ```
