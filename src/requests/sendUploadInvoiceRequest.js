@@ -2,43 +2,37 @@ import { sendRequest } from "../helpers/sendRequest";
 import { createSignature } from "../helpers/cryptoHelper";
 import convert from "xml-js";
 
-export async function sendUploadInvoiceRequest({
-  tin,
-  signKey,
-  certSerial,
-  token,
-  routingKey,
-  hostname,
-  path,
+export async function sendUploadInvoiceRequest(inputData) {
+  const {
+    tin,
+    signKey,
+    certSerial,
+    token,
+    routingKey,
+    hostname,
+    path,
 
-  //-- request specific params
-  date, // YYYY-MM-DD
-  time, // HH:mm:ss
-  regId,
-  efdSerial,
-  receiptCode, //from registration details
-  rctNum,
-  zNum,
-  dc,
-  gc,
-  customerId,
-  customerIdType,
-  customerName,
-  mobileNumber,
-  items,
-  totals,
-  payments,
-  vatTotals,
-}) {
-  const itemsXML = getItemsXML(items);
-  const totalsXML = getTotalsXML(totals);
-  const paymentsXML = getPaymentsXML(payments);
-  const vatTotalsXML = getVATTotalsXML(vatTotals);
+    //-- request specific params
+    date, // YYYY-MM-DD
+    time, // HH:mm:ss
+    regId,
+    efdSerial,
+    receiptCode, //from registration details
+    rctNum,
+    zNum,
+    dc,
+    gc,
+    customerId,
+    customerIdType,
+    customerName,
+    mobileNumber,
+    items,
+    totals,
+    payments,
+    vatTotals,
+  } = inputData;
 
-  const rctData = `<RCT><DATE>${date}</DATE><TIME>${time}</TIME><TIN>${tin}</TIN><REGID>${regId}</REGID><EFDSERIAL>${efdSerial}</EFDSERIAL><CUSTIDTYPE>${customerIdType}</CUSTIDTYPE><CUSTID>${customerId}</CUSTID><CUSTNAME>${customerName}</CUSTNAME><MOBILENUM>${mobileNumber}</MOBILENUM><RCTNUM>${rctNum}</RCTNUM><DC>${dc}</DC><GC>${gc}</GC><ZNUM>${zNum}</ZNUM><RCTVNUM>${receiptCode}${gc}</RCTVNUM>${itemsXML}${totalsXML}${paymentsXML}${vatTotalsXML}</RCT>`;
-  const signature = await createSignature(signKey, rctData);
-
-  const postData = `<?xml version="1.0" encoding="UTF-8"?><EFDMS>${rctData}<EFDMSSIGNATURE>${signature}</EFDMSSIGNATURE></EFDMS>`;
+  const postData = await uploadInvoiceXMLRequest(inputData);
 
   const headers = {
     "Content-Type": "application/xml",
@@ -83,6 +77,47 @@ export async function sendUploadInvoiceRequest({
   }
 
   return null;
+}
+
+export async function uploadInvoiceXMLRequest({
+  tin,
+  signKey,
+  certSerial,
+  token,
+  routingKey,
+  hostname,
+  path,
+
+  //-- request specific params
+  date, // YYYY-MM-DD
+  time, // HH:mm:ss
+  regId,
+  efdSerial,
+  receiptCode, //from registration details
+  rctNum,
+  zNum,
+  dc,
+  gc,
+  customerId,
+  customerIdType,
+  customerName,
+  mobileNumber,
+  items,
+  totals,
+  payments,
+  vatTotals,
+}) {
+  const itemsXML = getItemsXML(items);
+  const totalsXML = getTotalsXML(totals);
+  const paymentsXML = getPaymentsXML(payments);
+  const vatTotalsXML = getVATTotalsXML(vatTotals);
+
+  const rctData = `<RCT><DATE>${date}</DATE><TIME>${time}</TIME><TIN>${tin}</TIN><REGID>${regId}</REGID><EFDSERIAL>${efdSerial}</EFDSERIAL><CUSTIDTYPE>${customerIdType}</CUSTIDTYPE><CUSTID>${customerId}</CUSTID><CUSTNAME>${customerName}</CUSTNAME><MOBILENUM>${mobileNumber}</MOBILENUM><RCTNUM>${rctNum}</RCTNUM><DC>${dc}</DC><GC>${gc}</GC><ZNUM>${zNum}</ZNUM><RCTVNUM>${receiptCode}${gc}</RCTVNUM>${itemsXML}${totalsXML}${paymentsXML}${vatTotalsXML}</RCT>`;
+  const signature = await createSignature(signKey, rctData);
+
+  const postData = `<?xml version="1.0" encoding="UTF-8"?><EFDMS>${rctData}<EFDMSSIGNATURE>${signature}</EFDMSSIGNATURE></EFDMS>`;
+
+  return postData;
 }
 
 //***** NOTE: Order of Keys in the item, seems to matter, otherwise TRA API throws an error */

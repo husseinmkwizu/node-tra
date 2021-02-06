@@ -5,7 +5,10 @@ import {
 } from "./helpers/cryptoHelper";
 import { sendTokenRequest } from "./requests/sendTokenRequest";
 import { sendRegistrationRequest } from "./requests/sendRegistrationRequest";
-import { sendUploadInvoiceRequest } from "./requests/sendUploadInvoiceRequest";
+import {
+  sendUploadInvoiceRequest,
+  uploadInvoiceXMLRequest,
+} from "./requests/sendUploadInvoiceRequest";
 
 export {
   loadKeyCertificate,
@@ -14,4 +17,5 @@ export {
   sendTokenRequest,
   sendRegistrationRequest,
   sendUploadInvoiceRequest,
+  uploadInvoiceXMLRequest,
 };
