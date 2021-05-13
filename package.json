@@ -1,6 +1,6 @@
 {
   "name": "node-tra",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -36,10 +36,10 @@
   },
   "homepage": "https://github.com/husseinmkwizu/node-tra#readme",
   "devDependencies": {
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
-    "@babel/plugin-proposal-optional-chaining": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.14.2",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
     "rimraf": "^3.0.2"
   },
   "dependencies": {
